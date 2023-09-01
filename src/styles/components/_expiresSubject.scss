@@ -1,0 +1,36 @@
+.expires_subject {
+  @include xs {
+    width: 100%;
+  }
+  @include md {
+    flex: 1;
+    @include dynamicAlignElement($direction: column);
+  }
+
+  .expires_sub {
+    @include dynamicAlignElement();
+    &_success {
+      @include dynamicAlignElement($algin: center);
+      span {
+        @include rectangular($background: $app_bg_btn_success);
+      }
+    }
+    &_warning {
+      @include dynamicAlignElement($algin: center);
+      span {
+        @include rectangular($background: $app_bg_btn_warning);
+      }
+    }
+    &_missing {
+      @include dynamicAlignElement($algin: center);
+      span {
+        @include rectangular($background: $app_bg_btn_missing);
+      }
+    }
+  }
+
+  &_list {
+    width: 100%;
+    @include dynamicAlignElement($direction: column);
+  }
+}

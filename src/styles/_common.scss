@@ -1,0 +1,113 @@
+// logo
+.logo {
+  font-size: $app_fontSize * 1.5;
+}
+
+// navgigation
+.navigation {
+  margin-block: $app_margin * 2;
+  @include dynamicAlignElement();
+  a {
+    @include Buttons($margin: 0, $padding: $app_padding - 0.5);
+    &.active {
+      @include Buttons(
+        $margin: 0,
+        $backgound: $app_bg_btn_active,
+        $padding: $app_padding - 0.5
+      );
+    }
+  }
+}
+
+// loading
+.loading {
+  @include dynamicPosition(
+    $position: fixed,
+    $top: 0,
+    $bottom: 0,
+    $left: 0,
+    $right: 0
+  );
+  background: $app_bg_loading;
+  &_content {
+    @include positionCenter();
+    @include dynamicAlignElement($algin: center, $direction: column);
+  }
+}
+
+// subject
+
+.subject {
+  @include Subject($margin: unset);
+  @include dynamicPosition($position: relative);
+  transition: all 0.3 ease;
+  width: 100%;
+  div {
+    @include dynamicAlignElement();
+  }
+  span {
+    @include dynamicPosition($position: absolute, $right: 1rem, $top: 50%);
+    width: 0.5rem;
+    height: 70%;
+    transform: translateY(-50%);
+    background: unset;
+    transition: all 0.3 ease;
+    border-radius: $app_border-radius;
+  }
+
+  &_success {
+    @include Subject($borderColor: $app_border_success, $margin: unset);
+    span {
+      background: $app_border_success;
+    }
+  }
+
+  &_warning {
+    @include Subject($borderColor: $app_border_warning, $margin: unset);
+    span {
+      background: $app_border_warning;
+    }
+  }
+
+  &_missing {
+    @include Subject($borderColor: $app_border_missing, $margin: unset);
+    span {
+      background: $app_border_missing;
+    }
+  }
+
+  .expires_head {
+    @include dynamicAlignElement($algin: center, $justify: space-between);
+    width: 100%;
+    button {
+      margin-right: $app_margin;
+    }
+  }
+
+  .schedule {
+    @include dynamicAlignElement($algin: center, $justify: space-between);
+    width: 100%;
+    margin: unset;
+    &_left {
+      @include dynamicAlignElement($direction: column);
+      margin: unset;
+      div {
+        @include dynamicAlignElement();
+      }
+    }
+    &_right {
+      @include dynamicAlignElement($algin: center, $gap: 1rem);
+      margin-right: $app_margin;
+    }
+  }
+}
+
+.input {
+  @include Input();
+}
+
+.select {
+  @include Select();
+}
+
+@debug $app_fontSize * 2;

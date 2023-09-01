@@ -1,0 +1,45 @@
+.button {
+  @include Buttons();
+  p,
+  img {
+    pointer-events: none;
+  }
+  &_icon {
+    @include Buttons($backgound: transparent, $padding: 0, $margin: 0);
+  }
+  &_edit {
+    @include Buttons(
+      $backgound: $app_bg_btn_edit,
+      $padding: 0.3rem,
+      $margin: 0
+    );
+  }
+  &_delete {
+    @include Buttons(
+      $backgound: $app_bg_btn_delete,
+      $padding: 0.3rem,
+      $margin: 0
+    );
+  }
+  &_idle {
+    @include Buttons($padding: $app_padding - 0.5);
+  }
+  &_success {
+    @include Buttons(
+      $backgound: $app_bg_btn_success,
+      $padding: $app_padding - 0.5
+    );
+  }
+  &_warning {
+    @include Buttons(
+      $backgound: $app_bg_btn_warning,
+      $padding: $app_padding - 0.5
+    );
+  }
+  &_missing {
+    @include Buttons(
+      $backgound: $app_bg_btn_missing,
+      $padding: $app_padding - 0.5
+    );
+  }
+}

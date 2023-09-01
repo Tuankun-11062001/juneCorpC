@@ -1,0 +1,20 @@
+.notification {
+  @include dynamicPosition(
+    $position: fixed,
+    $top: 0,
+    $left: 0,
+    $right: 0,
+    $bottom: 0
+  );
+  z-index: 3;
+  &_content {
+    @include positionBottomCenter();
+    top: 3rem;
+    &_success {
+      @include notification($background: $app_bg_notification_success);
+    }
+    &_error {
+      @include notification($background: $app_bg_notification_missing);
+    }
+  }
+}

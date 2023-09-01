@@ -1,0 +1,25 @@
+.daily-schedule {
+  @include dynamicAlignElement($algin: center, $direction: column, $gap: 3rem);
+  padding: $app_padding;
+  border: 0.1rem solid $app_border_idle;
+  border-radius: $app_border-radius;
+  @include xs {
+    width: 100%;
+  }
+
+  @include md {
+    flex: 0.6;
+  }
+
+  .row {
+    width: 100%;
+    @include dynamicAlignElement($algin: center, $justify: space-between);
+    p {
+      flex: 0.6;
+    }
+    .col {
+      flex: 1;
+      @include dynamicAlignElement($direction: column);
+    }
+  }
+}

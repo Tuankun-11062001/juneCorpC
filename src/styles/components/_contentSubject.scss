@@ -1,0 +1,35 @@
+.content_subject {
+  @include xl {
+    flex: 1;
+    @include dynamicAlignElement($direction: column);
+  }
+
+  @include xs {
+    width: 100%;
+  }
+
+  textarea {
+    background: transparent;
+    border: 0.1rem solid $app_border_idle;
+    border-radius: $app_border_radius;
+    width: 100% !important;
+    height: 20rem !important;
+    resize: none;
+    color: $app_text_main;
+    font-size: $app_fontSize;
+    padding: $app_padding;
+  }
+  .content_button {
+    @include md {
+      @include dynamicAlignElement($algin: center, $justify: space-between);
+      width: 100%;
+    }
+
+    @include sm {
+      @include dynamicAlignElement($algin: center, $direction: column);
+    }
+    div {
+      @include dynamicAlignElement($algin: center, $justify: center);
+    }
+  }
+}

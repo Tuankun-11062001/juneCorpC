@@ -1,0 +1,45 @@
+// App background color
+$app_bg_color: #0e0e0e;
+$app_bg_loading: rgba(0, 0, 0, 0.8);
+$app_bg_btn_edit: #e35403;
+$app_bg_btn_delete: #f12046;
+$app_bg_btn_success: #0cb0f0;
+$app_bg_btn_warning: #fcdf07;
+$app_bg_btn_missing: #f12046;
+$app_bg_notification_success: #0cb0f0;
+$app_bg_notification_warning: #fcdf07;
+$app_bg_notification_missing: #f12046;
+$app_bg_btn_notActive: #1e1e1e;
+$app_bg_btn_active: #0cb0f0;
+$app_border_idle: #fff;
+$app_border_success: #0cb0f0;
+$app_border_warning: #fcdf07;
+$app_border_missing: #f12046;
+$app_bg_input_transparent: transparent;
+// App text color
+$app_text_main: #fff;
+$app_text_second: #33363f;
+
+// App border color
+
+$app_border_color: (
+  success: #0cb0f0,
+  warning: #fcdf07,
+  missing: #f12046,
+);
+
+@each $key, $val in $app_border_color {
+  .border-#{$key} {
+    border: 0.1rem solid $val;
+  }
+}
+
+// layout
+$app_padding: 1rem;
+$app_margin: 1rem;
+$app_fontSize: 1.6rem;
+$app_border-radius: 0.5rem;
+$app_width: 100%;
+$app_box_rectangle_width: 1rem;
+$app_box_rectangle_height: 1rem;
+$app_notification_width: 30rem;

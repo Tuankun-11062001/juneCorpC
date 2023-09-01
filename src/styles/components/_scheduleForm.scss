@@ -1,0 +1,7 @@
+.schedule_form {
+  @include dynamicAlignElement($direction: column);
+  flex: 0.5;
+  &_btns {
+    @include dynamicAlignElement($gap: unset);
+  }
+}

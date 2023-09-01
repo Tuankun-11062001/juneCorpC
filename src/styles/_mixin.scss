@@ -1,0 +1,183 @@
+// layout
+
+@mixin dynamicAlignElement(
+  $justify: start,
+  $algin: start,
+  $direction: row,
+  $gap: 1rem,
+  $wrap: no-wrap
+) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $algin;
+  flex-direction: $direction;
+  gap: $gap;
+  flex-wrap: $wrap;
+}
+
+@mixin positionCenter() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin positionBottomCenter() {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin dynamicPosition(
+  $position: relative,
+  $top: unset,
+  $left: unset,
+  $right: unset,
+  $bottom: unset
+) {
+  @if ($position == "absolute") {
+    position: absolute;
+    top: $top;
+    left: $left;
+    right: $right;
+    bottom: $bottom;
+  }
+  @if ($position == "fixed") {
+    position: fixed;
+    top: $top;
+    left: $left;
+    right: $right;
+    bottom: $bottom;
+  }
+  @if ($position == "relative") {
+    position: relative;
+    top: $top;
+    left: $left;
+    right: $right;
+    bottom: $bottom;
+  }
+}
+
+// component
+
+@mixin Buttons(
+  $fontSize: $app_fontSize,
+  $backgound: $app_bg_btn_notActive,
+  $borderRadius: $app_border-radius,
+  $padding: $app_padding,
+  $margin: $app_margin
+) {
+  font-size: $fontSize;
+  color: $app_text_main;
+  background: $backgound;
+  padding: $padding;
+  margin: $margin;
+  border-radius: $borderRadius;
+  border: 0.1rem solid $backgound;
+
+  @include dynamicAlignElement($justify: center, $algin: center, $gap: unset);
+  &:hover {
+    background: rgba($backgound, 0.8);
+    border: 0.1rem solid rgba($backgound, 0.8);
+  }
+}
+
+// input
+@mixin Input(
+  $padding: $app_padding,
+  $borderRadius: $app_border_radius,
+  $background: $app_bg_input_transparent,
+  $color: $app_text_main,
+  $borderColor: $app_border_idle,
+  $width: $app_width,
+  $fontSize: $app_fontSize
+) {
+  padding: $padding;
+  border-radius: $borderRadius;
+  background: $background;
+  color: $color;
+  border: 0.1rem solid $borderColor;
+  width: $width;
+  font-size: $fontSize;
+  &:focus {
+    border: 0.1rem solid $app_border_success;
+  }
+  &[type="date"]::-webkit-calendar-picker-indicator {
+    background: white;
+  }
+}
+
+// select
+
+@mixin Select(
+  $padding: $app_padding,
+  $borderRadius: $app_border_radius,
+  $background: $app_bg_input_transparent,
+  $color: $app_text_main,
+  $borderColor: $app_border_idle,
+  $width: $app_width,
+  $fontSize: $app_fontSize
+) {
+  padding: $padding;
+  border-radius: $borderRadius;
+  background: $background;
+  color: $color;
+  border: 0.1rem solid $borderColor;
+  width: $width;
+  font-size: $fontSize;
+  option {
+    background: $app_bg_color;
+    font-size: $fontSize;
+  }
+  &:focus {
+    border: 0.1rem solid $app_border_success;
+  }
+}
+
+// subject
+
+@mixin Subject(
+  $fontSize: $app_fontSize,
+  $borderColor: $app_border_idle,
+  $padding: $app_padding,
+  $margin: $app_margin,
+  $borderRadius: $app_border_radius
+) {
+  color: $app_text_main;
+  border: 0.1rem solid $borderColor;
+  font-size: $fontSize;
+  padding: $padding;
+  margin: $margin;
+  border-radius: $borderRadius;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+// rectangular color
+
+@mixin rectangular(
+  $background: $app_bg_color,
+  $width: $app_box_rectangle_width,
+  $height: $app_box_rectangle_height
+) {
+  width: $width;
+  height: $height;
+  background: $background;
+  display: block;
+}
+
+// notification
+@mixin notification(
+  $background: $app_bg_color,
+  $width: $app_notification_width,
+  $padding: $app_padding,
+  $borderRadius: $app_border_radius
+) {
+  background: $background;
+  padding: $padding;
+  width: $width;
+  border-radius: $borderRadius;
+  p {
+    text-align: center;
+  }
+}

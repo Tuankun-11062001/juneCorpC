@@ -1,0 +1,67 @@
+.appreciate {
+  @include xs {
+    display: none;
+  }
+  @include lg {
+    @include dynamicAlignElement();
+  }
+
+  &_table {
+    flex: 1;
+    @include dynamicAlignElement(
+      $direction: column,
+      $algin: center,
+      $gap: 5rem
+    );
+    border: 0.1rem solid $app_border_idle;
+    padding: $app_padding;
+    border-radius: $app_border_radius;
+  }
+  &_week {
+    @include dynamicAlignElement($algin: stretch);
+    width: 100%;
+  }
+  &_session {
+    @include dynamicAlignElement($direction: column, $justify: space-between);
+    flex: 0.2;
+  }
+  &_day {
+    flex: 1;
+    @include dynamicAlignElement(
+      $direction: column,
+      $algin: center,
+      $gap: 5rem
+    );
+    div {
+      @include dynamicAlignElement($direction: column);
+      width: 100%;
+    }
+  }
+
+  &_note {
+    flex: 0.1;
+    &_list {
+      @include dynamicAlignElement($direction: column);
+    }
+    &_success,
+    &_warning,
+    &_missing {
+      @include dynamicAlignElement($algin: center);
+    }
+    &_success {
+      span {
+        @include rectangular($background: $app_bg_btn_success);
+      }
+    }
+    &_warning {
+      span {
+        @include rectangular($background: $app_bg_btn_warning);
+      }
+    }
+    &_missing {
+      span {
+        @include rectangular($background: $app_bg_btn_missing);
+      }
+    }
+  }
+}

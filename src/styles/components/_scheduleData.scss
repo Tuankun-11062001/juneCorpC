@@ -1,0 +1,14 @@
+.schedule_data {
+  flex: 1;
+  &_list {
+    @include dynamicAlignElement($justify: space-between, $gap: 5rem);
+    width: 100%;
+  }
+  &_group {
+    width: 100%;
+    div {
+      margin-top: $app_margin;
+      @include dynamicAlignElement($direction: column);
+    }
+  }
+}

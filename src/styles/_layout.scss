@@ -1,0 +1,30 @@
+.layoutApp {
+  margin-top: $app_margin * 2;
+  @include xs {
+    margin-inline: $app_margin * 2;
+  }
+  @include md {
+    margin-inline: $app_margin * 5;
+  }
+  &_home {
+    @include xs {
+      @include dynamicAlignElement($gap: 10rem, $direction: column);
+    }
+    @include md {
+      width: 100%;
+      @include dynamicAlignElement($gap: 10rem);
+    }
+    @include xl {
+      width: 100%;
+      @include dynamicAlignElement($gap: 10rem);
+    }
+  }
+  &_schedule {
+    @include xs {
+      display: none;
+    }
+    @include md {
+      @include dynamicAlignElement($gap: 10rem);
+    }
+  }
+}
