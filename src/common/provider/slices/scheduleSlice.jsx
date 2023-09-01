@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import scheduleApi from "../../api/schedule";
+import { actionNotification } from "./actionSlice";
 
 const scheduleSlice = createSlice({
   initialState: {
@@ -80,13 +81,14 @@ const scheduleSlice = createSlice({
       builder.addCase(saveAllScheduleThunk.fulfilled, (state, actions) => {
         state.loading = false;
         state.state = "idle";
-        state.message = actions.payload;
+        state.message = actions.payload?.message;
+        state.data = [];
       }),
       builder.addCase(saveAllScheduleThunk.rejected, (state, actions) => {
         state.loading = false;
         state.state = "idle";
         state.today = [];
-        state.error = "some thing went wrong";
+        state.message = actions.payload?.message;
       }),
       builder.addCase(getScheduleThunk.pending, (state, actions) => {
         state.loading = true;
@@ -95,12 +97,13 @@ const scheduleSlice = createSlice({
       builder.addCase(getScheduleThunk.fulfilled, (state, actions) => {
         state.loading = false;
         state.state = "idle";
-        state.today = actions.payload;
+        state.today = actions.payload?.data;
+        state.message = actions.payload?.message
       }),
       builder.addCase(getScheduleThunk.rejected, (state, actions) => {
         state.loading = false;
         state.state = "idle";
-        state.error = "some thing went wrong";
+        state.message = actions.payload?.message;
       }),
       builder.addCase(updateScheduleThunk.pending, (state, actions) => {
         state.loading = true;
@@ -109,12 +112,12 @@ const scheduleSlice = createSlice({
       builder.addCase(updateScheduleThunk.fulfilled, (state, actions) => {
         state.loading = false;
         state.state = "idle";
-        state.message = actions.payload;
+        state.message = actions.payload?.message;
       }),
       builder.addCase(updateScheduleThunk.rejected, (state, actions) => {
         state.loading = false;
         state.state = "idle";
-        state.message = actions.payload;
+        state.message = actions.payload?.message;
       });
   },
 });

@@ -13,7 +13,7 @@ import { actionCloseEditSubject } from "../../../common/utils/buttonAction";
 const ScheduleForm = () => {
   const dispatch = useDispatch();
   const { mode, data } = useSelector((state) => state.actions.editMode);
-
+  const {error} = useSelector(state => state.actions);
   const [dataSchedule, setDataSchedule] = useState({
     date: "",
     session: "",
@@ -51,6 +51,7 @@ const ScheduleForm = () => {
           data={dataSchedule}
           setData={setDataSchedule}
           dispatch={dispatch}
+          error={error}
         />
       )}
     </>
@@ -102,35 +103,37 @@ const ScheduleFormEdit = ({ data, setData, dispatch }) => {
   );
 };
 
-const Form = ({ data, setData, dispatch }) => {
+const Form = ({ data, setData, dispatch,error }) => {
   return (
     <div className="schedule_form">
       <Input
         placeholder="Date tomorrow"
         type="date"
-        func={(e) => handleInput(e, data, setData)}
+        func={(e) => handleInput(e, data, setData ,dispatch)}
         name="date"
         value={data.date}
       />
       <Select
         name="session"
         value={data.session}
-        func={(e) => handleInput(e, data, setData)}
+        func={(e) => handleInput(e, data, setData ,dispatch)}
       />
       <Input
         placeholder="Subject"
         type="text"
-        func={(e) => handleInput(e, data, setData)}
+        func={(e) => handleInput(e, data, setData ,dispatch)}
         name="subject"
         value={data.subject}
       />
       <Input
         placeholder="Time"
         type="text"
-        func={(e) => handleInput(e, data, setData)}
+        func={(e) => handleInput(e, data, setData,dispatch)}
         name="time"
         value={data.time}
       />
+      {error.mode && <p className="schedule_form_error">{error.message}</p>}
+      
       <Buttons
         title="Add"
         type="success"

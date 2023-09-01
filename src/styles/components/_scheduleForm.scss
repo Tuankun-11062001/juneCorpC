@@ -4,4 +4,7 @@
   &_btns {
     @include dynamicAlignElement($gap: unset);
   }
+  &_error{
+    color:$app_text_error;
+  }
 }

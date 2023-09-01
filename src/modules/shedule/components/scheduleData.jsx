@@ -47,7 +47,7 @@ const ScheduleData = () => {
           func={() => handleSaveAllSchedule(data, dispatch)}
         />
       </div>
-      {notification && <Notification title={message} />}
+      {notification && message ? <Notification title={message} /> : ''}
     </>
   );
 };

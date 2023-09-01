@@ -1,4 +1,5 @@
-import { actionNotification } from "../../../common/provider/slices/actionSlice";
+
+import { actionError, actionNotification } from "../../../common/provider/slices/actionSlice";
 import {
   addSchedule,
   deleteSchedule,
@@ -13,7 +14,7 @@ export const handleAddSchedule = (data, dispatch) => {
     data.subject === "" ||
     data.time === ""
   ) {
-    return console.log("errr");
+    return dispatch(actionError({mode:true,message:'Missing Fields'}));
   }
 
   let code;
@@ -72,14 +73,20 @@ export const handleDeleteSchedule = (data, dispatch) => {
 
 export const handleSaveAllSchedule = (data, dispatch) => {
   const currentDate = new Date();
-  const nextDate = new Date(currentDate);
-  nextDate.setDate(currentDate.getDate() + 1);
+  // const nextDate = new Date(currentDate);
+  // nextDate.setDate(currentDate.getDate() + 1);
+  // const tomorrow =
+  //   ("0" + (nextDate.getMonth() + 1)).slice(-2) +
+  //   "/" +
+  //   ("0" + nextDate.getDate()).slice(-2) +
+  //   "/" +
+  //   nextDate.getFullYear();
   const tomorrow =
-    ("0" + (nextDate.getMonth() + 1)).slice(-2) +
+    ("0" + (currentDate.getMonth() + 1)).slice(-2) +
     "/" +
-    ("0" + nextDate.getDate()).slice(-2) +
+    ("0" + currentDate.getDate()).slice(-2) +
     "/" +
-    nextDate.getFullYear();
+    currentDate.getFullYear();
   const customData = {
     ...data,
     date: tomorrow,

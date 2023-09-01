@@ -17,7 +17,8 @@ const weekSlice = createSlice({
       builder.addCase(getWeekThunk.fulfilled, (state, actions) => {
         state.loading = false;
         state.state = "idle";
-        state.data = actions.payload;
+        state.message = actions.payload.message;
+        state.data = actions.payload.data;
       }),
       builder.addCase(getWeekThunk.rejected, (state, actions) => {
         state.loading = false;

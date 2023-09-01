@@ -30,9 +30,9 @@ const ExpiresSubject = () => {
   useEffect(() => {
     setData({
       ...data,
-      success: Math.floor((succes.length / final.length) * 100),
-      warning: Math.floor((warning.length / final.length) * 100),
-      missing: Math.floor((missing.length / final.length) * 100),
+      success: Math.floor((succes?.length / final?.length) * 100),
+      warning: Math.floor((warning?.length / final?.length) * 100),
+      missing: Math.floor((missing?.length / final?.length) * 100),
     });
   }, [today]);
 

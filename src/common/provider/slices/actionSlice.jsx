@@ -8,6 +8,10 @@ const actionSlice = createSlice({
     },
     contentMode: {},
     notification: false,
+    error:{
+      mode:false,
+      message:''
+    }
   },
   name: "actions_app",
   reducers: {
@@ -25,6 +29,10 @@ const actionSlice = createSlice({
     actionNotification: (state, actions) => {
       state.notification = actions.payload;
     },
+    actionError: (state, actions) => {
+      state.error.mode = actions.payload.mode;
+      state.error.message = actions.payload.message;
+    }
   },
 });
 
@@ -33,5 +41,6 @@ export const {
   actionCloseEditMode,
   actionContentMode,
   actionNotification,
+  actionError
 } = actionSlice.actions;
 export default actionSlice.reducer;

@@ -2,8 +2,9 @@ import {
   actionCloseEditMode,
   actionContentMode,
   actionEditMode,
+  actionNotification,
 } from "../provider/slices/actionSlice";
-import { editScheduleToday } from "../provider/slices/scheduleSlice";
+import { editScheduleToday, updateScheduleThunk } from "../provider/slices/scheduleSlice";
 
 export const actionEditSubject = (state, dispatch) => {
   dispatch(actionEditMode(state));

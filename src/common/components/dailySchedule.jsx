@@ -3,8 +3,7 @@ import Subject from "./subject";
 import Title from "./widget/title";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getScheduleThunk,
-  updateScheduleThunk,
+  getScheduleThunk, updateScheduleThunk,
 } from "../provider/slices/scheduleSlice";
 import { actionNotification } from "../provider/slices/actionSlice";
 
@@ -14,17 +13,20 @@ const DailySchedule = () => {
   useEffect(() => {
     const fetchSchedule = () => {
       dispatch(getScheduleThunk());
+    dispatch(actionNotification(true));
     };
     fetchSchedule();
   }, []);
 
+
   useEffect(() => {
-    const saveSchedule = () => {
+    const updateSchedule = () => {
       dispatch(updateScheduleThunk(today));
+      dispatch(actionNotification(true));
     };
-    saveSchedule();
-    dispatch(actionNotification(true));
-  }, [today]);
+    updateSchedule();
+  },[today])
+
   return (
     <div className="daily-schedule">
       {/* date */}

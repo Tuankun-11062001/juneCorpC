@@ -7,7 +7,7 @@ const Notification = ({ title }) => {
   useEffect(() => {
     setTimeout(() => {
       dispatch(actionNotification(false));
-    }, 1000);
+    }, 2500);
   }, []);
   return (
     <div className="notification">

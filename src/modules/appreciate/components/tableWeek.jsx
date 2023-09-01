@@ -4,12 +4,16 @@ import Subject from "../../../common/components/subject";
 import { useDispatch, useSelector } from "react-redux";
 import { getWeekThunk } from "../../../common/provider/slices/weekSlice";
 import Loading from "../../../common/components/loading";
+import { actionNotification } from "../../../common/provider/slices/actionSlice";
+import Notification from "../../../common/components/notification";
 
 const TableWeek = () => {
   const dispatch = useDispatch();
-  const { data, loading } = useSelector((state) => state.week);
+  const { data, loading,message } = useSelector((state) => state.week);
+  const { notification} = useSelector((state) => state.actions);
   useEffect(() => {
     dispatch(getWeekThunk());
+    dispatch(actionNotification(true));
   }, []);
 
   return (
@@ -37,7 +41,7 @@ const TableWeek = () => {
               <p>Morning</p>
               <div>
                 {scheduleWeek.morning?.map((schedule, i) => (
-                  <Subject data={{ ...schedule, i }} key={schedule._id} />
+                  <Subject data={{ ...schedule, i }} key={i} />
                 ))}
               </div>
 
@@ -45,7 +49,7 @@ const TableWeek = () => {
               <p>Afternoon</p>
               <div>
                 {scheduleWeek.afternoon?.map((schedule, i) => (
-                  <Subject data={{ ...schedule, i }} key={schedule._id} />
+                  <Subject data={{ ...schedule, i }} key={i} />
                 ))}
               </div>
 
@@ -53,7 +57,7 @@ const TableWeek = () => {
               <p>Evenning</p>
               <div>
                 {scheduleWeek.evenning?.map((schedule, i) => (
-                  <Subject data={{ ...schedule, i }} key={schedule._id} />
+                  <Subject data={{ ...schedule, i }} key={i} />
                 ))}
               </div>
             </div>
@@ -61,6 +65,7 @@ const TableWeek = () => {
         </div>
       </div>
       {loading && <Loading />}
+      {notification && message ? <Notification title={message}/>:''}
     </>
   );
 };
