@@ -73,20 +73,15 @@ export const handleDeleteSchedule = (data, dispatch) => {
 
 export const handleSaveAllSchedule = (data, dispatch) => {
   const currentDate = new Date();
-  // const nextDate = new Date(currentDate);
-  // nextDate.setDate(currentDate.getDate() + 1);
-  // const tomorrow =
-  //   ("0" + (nextDate.getMonth() + 1)).slice(-2) +
-  //   "/" +
-  //   ("0" + nextDate.getDate()).slice(-2) +
-  //   "/" +
-  //   nextDate.getFullYear();
+  const nextDate = new Date(currentDate);
+  nextDate.setDate(currentDate.getDate() + 1);
   const tomorrow =
-    ("0" + (currentDate.getMonth() + 1)).slice(-2) +
+    ("0" + (nextDate.getMonth() + 1)).slice(-2) +
     "/" +
-    ("0" + currentDate.getDate()).slice(-2) +
+    ("0" + nextDate.getDate()).slice(-2) +
     "/" +
-    currentDate.getFullYear();
+    nextDate.getFullYear();
+  
   const customData = {
     ...data,
     date: tomorrow,
