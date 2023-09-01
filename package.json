@@ -1,5 +1,5 @@
 {
-  "homepage": "https://Tuankun-11062001.github.io/june_c",
+  "homepage": "https://Tuankun-11062001.github.io/juneCorpC",
   "name": "june_c",
   "private": true,
   "version": "0.0.0",
@@ -15,6 +15,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
+    "dotenv": "^16.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.2",

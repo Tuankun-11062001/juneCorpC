@@ -1,4 +1,6 @@
-const urlServer = "http://localhost:3001";
+
+const urlServer = 'https://june-corp-s.vercel.app'
+
 import axios from "axios";
 
 const api = {
